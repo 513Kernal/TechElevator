@@ -4,69 +4,90 @@ public class Lecture {
 
 	//0. Return any String
 	public String returnsAString() {
-		String myString = null;
+		String myString = "Hello Kris";
 		return myString;
 	}
 
-	//1. Return a String made from the characters in the input array
+	//1. Return a String made from the characters in the input
 	public String makeStringFromChars(char a, char b, char c) {
-		return null;
+		char[] input = new char[] {a, b, c};
+		String output = new String(input);
+		return output;
 	}
 
 	//2. getInputLength("abc") -> 3
 	public int getInputLength(String input) {
-		return -1;
+
+		return input.length();
 	}
 
 	//3. getFirst3Letters("abcdef") -> "abc"
 	public String getFirst3Letters(String input) {
-		return new String();
+		String output = input.substring(0,3);
+
+		return input.substring(0, 3);
 	}
 
 	//4. getLast3Letters("abcdef") -> "def"
 	public String getLast3Letters(String input) {
-		return "";
+		// can be broken up to
+		//int startIndex = input.length() - 3;
+		//return input.substring(startIndex);
+
+
+		return input.substring(input.length() - 3);
 	}
 
 	//5. removeFirstLetter("abcdef") -> "bcdef"
 	public String removeFirstLetter(String input) {
-		return "";
+		//starting at (1) skips a so becomes bcdef since
+		// 0-a 1-b 2-c 3-d 4-e 5-f
+
+
+		return input.substring(1);
 	}
 
 	//6. locationOfFirstCat("I have a catalog of cats.") -> 9
 	public int locationOfFirstCat(String stringWithCat) {
-		return Integer.MAX_VALUE;
+
+		return stringWithCat.indexOf("cat");
 	}
 
 	//7. locationOfLastCat("I have a catalog of cats.") -> 20
 	public int locationOfLastCat(String stringWithCat) {
-		return Integer.MIN_VALUE;
+
+		return stringWithCat.lastIndexOf("cat");
 	}
 
 	//8. getFifthCharacter("abcdef") -> 'e'
 	public char getFifthCharacter(String input) {
-		return 'x';
+
+		return input.charAt(4);
 	}
 
 	//9. isCareful("I don't think Voldemort is real.") -> "No"
 	//   isCareful("Beware of He Who Must Not Be Named.") -> "Yes"
 	public String isCareful(String statement) {
+
 		return "Yes";
 	}
 
 	//10. roundOnBothEnds("Ohio") -> true
 	//    roundOnBothEnds("Oklahoma") -> false
 	public boolean roundOnBothEnds(String name) {
+
 		return false;
 	}
 
 	//11. sayItLouder("Look out!") -> "LOOK OUT!"
 	public String sayItLouder(String phrase) {
+
 		return phrase;
 	}
 
 	//12. princeToFrog("The prince sat by the pond.") -> "The frog sat by the pond. "
 	public String princeToFrog(String story) {
+
 		return "";
 	}
 
@@ -85,6 +106,7 @@ public class Lecture {
 		conCat("abc", "") → "abc"
 	*/
 	public String conCat(String a, String b) {
+
 		return a + b;
 	}
 }
