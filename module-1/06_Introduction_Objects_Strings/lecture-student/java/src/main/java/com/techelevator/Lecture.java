@@ -1,5 +1,7 @@
 package com.techelevator;
 
+import java.util.Locale;
+
 public class Lecture {
 
 	//0. Return any String
@@ -68,33 +70,51 @@ public class Lecture {
 	//9. isCareful("I don't think Voldemort is real.") -> "No"
 	//   isCareful("Beware of He Who Must Not Be Named.") -> "Yes"
 	public String isCareful(String statement) {
+		//String result = "Yes";
 
-		return "Yes";
+		if (statement.contains("Voldemort")) {
+			return "No";
+		}
+		else {
+			return "Yes";
+		}
+
+
 	}
 
 	//10. roundOnBothEnds("Ohio") -> true
 	//    roundOnBothEnds("Oklahoma") -> false
 	public boolean roundOnBothEnds(String name) {
+		boolean result = false;
+		boolean startsWithO = name.startsWith("O") || name.startsWith("o");
+		boolean endsWithO = name.endsWith("O") || name.endsWith("o");
+		if (startsWithO && endsWithO) {
 
-		return false;
+			result = true;
+		}
+
+
+		return result;
 	}
 
 	//11. sayItLouder("Look out!") -> "LOOK OUT!"
 	public String sayItLouder(String phrase) {
+		//String upper = phrase.toUpperCase();
 
-		return phrase;
+		return phrase.toUpperCase();
 	}
 
 	//12. princeToFrog("The prince sat by the pond.") -> "The frog sat by the pond. "
 	public String princeToFrog(String story) {
 
-		return "";
+
+		return story.replace("prince", "frog");
 	}
 
 	//13. isDarthVader("Anakin", "Skywalker") -> true
 	public boolean isDarthVader(String firstName, String lastName) {
 		String fullName = firstName + " " + lastName;
-		return fullName == "Anakin Skywalker";
+		return fullName .equals("Anakin Skywalker");
 	}
 
 	/*
@@ -106,7 +126,15 @@ public class Lecture {
 		conCat("abc", "") → "abc"
 	*/
 	public String conCat(String a, String b) {
+		String result = a + b;
+		// check to see if last character is the same as first
+		if (a.length() > 0 && b.length() >0){
+			if (a.charAt(a.length() -1) == b.charAt(0)) {
+				result = a + b.substring(1);
+		}
 
-		return a + b;
+		}
+
+		return result;
 	}
 }
