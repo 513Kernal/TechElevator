@@ -1,6 +1,7 @@
 package com.techelevator;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Exercises {
@@ -16,8 +17,13 @@ public class Exercises {
 	 array2List( {"Left", "Right", "Forward", "Back"} )  ->  ["Left", "Right", "Forward", "Back"]
 	 */
 	public List<String> array2List(String[] stringArray) {
+		List<String> fruitList = new ArrayList<>();
+		for (String fruit : stringArray) {
+			fruitList.add(fruit);
+		}
 
-		return null;
+
+		return fruitList;
 	}
 
 	/*
@@ -27,8 +33,9 @@ public class Exercises {
 	 list2Array( ["Left", "Right", "Forward", "Back"] )  ->  {"Left", "Right", "Forward", "Back"}
 	 */
 	public String[] list2Array(List<String> stringList) {
+		String[] list2Array = stringList.toArray(new String[stringList.size()]);
 
-		return null;
+		return list2Array;
 	}
 
 	/*
@@ -40,7 +47,14 @@ public class Exercises {
 	 */
 	public List<String> no4LetterWords(String[] stringArray) {
 
-		return null;
+		List<String> no4Letters = new ArrayList<>();
+		for (String no4S : stringArray) {
+			if (no4S.length() != 4) {
+				no4Letters.add(no4S);
+			}
+		}
+
+		return no4Letters;
 	}
 
 	/*
@@ -51,7 +65,13 @@ public class Exercises {
 	 */
 	public List<Double> arrayInt2ListDouble(int[] intArray) {
 
-		return null;
+		List<Double> divided2 = new ArrayList<>();
+
+		for (Integer divideDoubles : intArray) {
+			divided2.add(divideDoubles / 2.0);
+		}
+
+		return divided2;
 	}
 
 	/*
@@ -62,7 +82,7 @@ public class Exercises {
 	 */
 	public Integer findLargest(List<Integer> integerList) {
 
-		return null;
+		return Collections.max(integerList);
 	}
 
 	/*
@@ -73,7 +93,15 @@ public class Exercises {
 	 */
 	public List<Integer> oddOnly(Integer[] integerArray) {
 
-		return null;
+		List<Integer> odds = new ArrayList<>();
+
+		for (Integer findOdds : integerArray) {
+			if (findOdds % 2 != 0) {
+				odds.add(findOdds);
+			}
+		}
+
+		return odds;
 	}
 
 	/*
@@ -84,6 +112,17 @@ public class Exercises {
 	 foundIntTwice( [9, 23, 44, 2, 88, 44], 44) -> true
 	 */
 	public boolean foundIntTwice(List<Integer> integerList, int intToFind) {
+		int count = 0;
+
+		for (Integer findTwice : integerList) {
+			if (intToFind == findTwice) {
+				count = count + 1;
+				//+ 1 isn't same as ++ here
+			}
+		}
+		if (count == 2) {
+			return true;
+		}
 
 		return false;
 	}
@@ -103,7 +142,23 @@ public class Exercises {
 	 */
 	public List<String> fizzBuzzList(Integer[] integerArray) {
 
-		return null;
+		List<String> fizzBuzzList = new ArrayList<String>();
+
+		for (Integer checkForFizzBuzz : integerArray) {
+			if (checkForFizzBuzz % 3 == 0 && checkForFizzBuzz % 5 == 0) {
+				fizzBuzzList.add("FizzBuzz");
+			} else if (checkForFizzBuzz % 3 == 0) {
+				fizzBuzzList.add("Fizz");
+			} else if (checkForFizzBuzz % 5 == 0) {
+				fizzBuzzList.add("Buzz");
+			} else {
+				fizzBuzzList.add(checkForFizzBuzz.toString());
+			}
+		}
+
+		return fizzBuzzList;
+
+
 	}
 
 	/*
@@ -115,7 +170,25 @@ public class Exercises {
 	 */
 	public List<Integer> interleaveLists(List<Integer> listOne, List<Integer> listTwo) {
 
-		return null;
-	}
+		List<Integer> interLeave = new ArrayList<Integer>();
 
+
+		for (int i = 0; i < Math.max(listOne.size(), listTwo.size()); i++) { //++ instead +1
+			if (i < listOne.size()) {
+				interLeave.add(listOne.get(i));
+			}
+
+			if (i < listTwo.size()) {
+				interLeave.add(listTwo.get(i));
+			}
+
+		}
+
+
+		return interLeave;
+
+
+	}
 }
+
+
