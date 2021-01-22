@@ -5,10 +5,13 @@ package com.techelevator;
  */
 public class Bookstore {
 
+
     public static void main(String[] args) {
 
         System.out.println("Welcome to the Tech Elevator Bookstore");
         System.out.println();
+
+
 
         // Step Three: Test the getters and setters
 
