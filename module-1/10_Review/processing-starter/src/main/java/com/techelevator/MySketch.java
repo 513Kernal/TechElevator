@@ -11,12 +11,17 @@ public class MySketch extends PApplet {
 
     @Override
     public void setup() {
-        background(255);
+        background(255,0,0);
     }
 
     @Override
     public void draw() {
-        circle(width / 2.0f, height / 2.0f, 200);
+
+        fill(255,255,100);
+
+        circle(random(width), random(height), 50);
     }
 
-}
+    }
+
+

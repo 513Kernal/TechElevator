@@ -13,7 +13,7 @@ public class Deck {
     List<Card> allCards = new ArrayList<>();
 
     public Deck() {
-        for (String suit : ALL_SUITS) {
+        for (String suit : ALL_SUITS) {   //nested for loop
             for (String rank : ALL_RANKS) {
                 Card card = new Card(rank, suit);
                 allCards.add(card);
