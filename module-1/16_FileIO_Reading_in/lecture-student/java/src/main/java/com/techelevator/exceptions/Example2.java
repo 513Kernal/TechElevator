@@ -9,7 +9,7 @@ public class Example2 {
 			System.out.println("Hey ya'll, watch this!");
 			doSomethingDangerous();  // throws an ArrayIndexOutOfBoundsException
 			System.out.println("See, I told you nothing would go wrong!");
-		} catch(ArrayIndexOutOfBoundsException e) {  
+		} catch(ArrayIndexOutOfBoundsException e) {  //e is just variable could be named anything
 			System.out.println("Call the Darwin Awards...");
 		}
 		
