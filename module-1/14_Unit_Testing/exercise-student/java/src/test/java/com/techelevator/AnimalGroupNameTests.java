@@ -15,4 +15,13 @@ public class AnimalGroupNameTests {
         //Assert
         Assert.assertEquals("Tower",herd);
     }
+
+    @Test
+    public void get_unknown_herd_name(){
+        AnimalGroupName sut = new AnimalGroupName();
+
+        String getherd = sut.getHerd("walrus");
+
+        Assert.assertEquals("unknown",getherd);
+    }
 }
