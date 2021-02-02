@@ -46,10 +46,10 @@ public class QuizMaker {
 			String userAnswer = input.nextLine();
 			int userInt = Integer.parseInt(userAnswer);
 			if(userInt==question1.getCorrectAnswer()){
-				System.out.println("RIGHT! ");
+				System.out.println("RIGHT!\n ");
 				correctAnswerCount++;
 			} else {
-				System.out.println("WRONG! ");
+				System.out.println("WRONG!\n ");
 			}
 			timesThroughScannerLoop++;
 

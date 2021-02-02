@@ -10,13 +10,13 @@ public class Examples {
 
 	private final Scanner userInput = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) { //static doesn't need instance of class to be ran
     	Examples examples = new Examples();
 
 		//examples.inspectFilesystem();
 		//examples.createDirectory();
 		//examples.createOrReplaceFile();
-		//examples.addToFile();
+		examples.addToFile();
 	}
 	
 	private String promptForString(String prompt) {
@@ -63,10 +63,10 @@ public class Examples {
     	String target = promptForString("Enter the path of the file to create or replace: ");
     	String content = promptForString("Enter content for the file: ");
 
-    	try {
-			PrintWriter writer = new PrintWriter(target);
+    	try (PrintWriter writer = new PrintWriter(target)){
+			//PrintWriter writer = new PrintWriter(target);
     		writer.println(content);
-    		writer.close();
+    		//writer.close();
     		System.out.println("File has been created (or replaced).");
 		} catch (IOException e) {
     		System.out.println("Couldn't create or replace file.");
@@ -77,12 +77,15 @@ public class Examples {
 		String target = promptForString("Enter the path of the file to be added to: ");
 		String content = promptForString("Enter additional content for the file: ");
 
-		try {
-			FileOutputStream stream = new FileOutputStream(target, true);
-			PrintWriter writer = new PrintWriter(stream);
+		try (FileOutputStream stream = new FileOutputStream(target, true);
+		PrintWriter writer = new PrintWriter(stream)){
+			//FileOutputStream stream = new FileOutputStream(target, true);
+			//PrintWriter writer = new PrintWriter(stream);
 			writer.println(content);
-			writer.close();
-			stream.close();
+			//writer.close();
+			//stream.close();
+			//commented out lines 82-83 as they were added to the try with resources
+			//so that it closes writer and stream together
 			System.out.println("File has been added to.");
 		} catch (IOException e) {
 			System.out.println("Couldn't append to file.");
