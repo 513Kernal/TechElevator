@@ -41,13 +41,13 @@ public class QuizQuestion {
     }
 
 
-    public QuizQuestion(String question, String answer1, String answer2,
-                        String answer3, String answer4){
-        this.question = question;
-        this.answer1 = answer1;
-        this.answer2 = answer2;
-        this.answer3 = answer3;
-        this.answer4 = answer4;
-    }
+//    public QuizQuestion(String question, String answer1, String answer2,
+//                        String answer3, String answer4){
+//        this.question = question;
+//        this.answer1 = answer1;
+//        this.answer2 = answer2;
+//        this.answer3 = answer3;
+//        this.answer4 = answer4;
+//    }
 
 }
