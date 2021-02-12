@@ -76,7 +76,8 @@ AND release_year = 2006
 -- 10. All of the ‘Action’ films starring Nick Stallone
 -- (2 rows)
 SELECT film.title
-FROM film JOIN film_actor ON film.film_id = film_actor.film_id
+FROM film 
+JOIN film_actor ON film.film_id = film_actor.film_id
 JOIN actor ON film_actor.actor_id = actor.actor_id
 JOIN film_category ON film.film_id = film_category.film_id
 JOIN category ON film_category.category_id = category.category_id
@@ -121,7 +122,8 @@ LIMIT 10
 -- (NOTE: Keep in mind that while a customer has only one primary store, they may rent from either store.)
 -- (Store 1 has 7928 total rentals and Store 2 has 8121 total rentals)
 SELECT store.store_id, address.address, COUNT(*), SUM(payment.amount), AVG(payment.amount)
-FROM store JOIN address on store.address_id = address.address_id
+FROM store 
+JOIN address on store.address_id = address.address_id
 JOIN inventory ON store.store_id = inventory.store_id
 JOIN rental ON inventory.inventory_id = rental.inventory_id
 JOIN payment ON rental.rental_id = payment.rental_id
@@ -130,7 +132,8 @@ GROUP BY store.store_id, address.address
 -- 16. The top ten film titles by number of rentals
 -- (#1 should be “BUCKET BROTHERHOOD�? with 34 rentals and #10 should have 31 rentals)
 SELECT film.title, COUNT(*) AS rental_count
-FROM film JOIN inventory ON film.film_id = inventory.film_id
+FROM film 
+JOIN inventory ON film.film_id = inventory.film_id
 JOIN rental ON inventory.inventory_id = rental.inventory_id
 GROUP BY film.film_id, film.title
 ORDER BY rental_count DESC

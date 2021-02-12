@@ -67,7 +67,7 @@ WHERE governmentform ILIKE '%monarchy%';
 -- 13. The name of all cities in the USA with a population between 1 million and 2 million people (6 rows) 
 SELECT name, population
 FROM city
-WHERE countrycode = 'USA' AND (population > 1000000 AND population < 2000000)
+WHERE countrycode = 'USA' AND (population > 1000000 AND population < 2000000);
 
 -- 14. The name and region of all countries in North or South America except for countries in the Caribbean (27 rows)
 SELECT name, region
@@ -107,7 +107,7 @@ WHERE lifeexpectancy > 70 AND (GNP >= 1 AND GNP <= 100);
 
 
 -- 21. The per capita GNP (i.e. GNP divided by population) in US Dollars of all countries in Europe (46 rows)
-SELECT name, GNP/population
+SELECT name, GNP/population AS percapitagnp
 FROM country
 WHERE continent = 'Europe';
 
