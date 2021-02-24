@@ -7,12 +7,7 @@ import static org.junit.Assert.assertNotNull;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.junit.FixMethodOrder;
+import org.junit.*;
 import org.junit.runners.MethodSorters;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
@@ -66,7 +61,7 @@ public class JDBCCityDAOIntegrationTest {
 	public void save_new_city_and_read_it_back() throws SQLException {
 		City theCity = makeLocalCityObject("SQL Station", "South Dakota", "USA", 65535);
 
-		dao.save(theCity);
+		dao.create(theCity);
 		City savedCity = dao.findCityById(theCity.getId());
 
 		assertNotEquals(null, theCity.getId());
@@ -77,7 +72,7 @@ public class JDBCCityDAOIntegrationTest {
 	public void returns_cities_by_country_code() {
 		City theCity = makeLocalCityObject("SQL Station", "South Dakota", TEST_COUNTRY, 65535);
 
-		dao.save(theCity);
+		dao.create(theCity);
 		List<City> results = dao.findCityByCountryCode(TEST_COUNTRY);
 
 		assertNotNull(results);
@@ -89,8 +84,8 @@ public class JDBCCityDAOIntegrationTest {
 	@Test
 	public void returns_multiple_cities_by_country_code() {
 
-		dao.save(makeLocalCityObject("SQL Station", "South Dakota", TEST_COUNTRY, 65535));
-		dao.save(makeLocalCityObject("Postgres Point", "North Dakota", TEST_COUNTRY, 65535));
+		dao.create(makeLocalCityObject("SQL Station", "South Dakota", TEST_COUNTRY, 65535));
+		dao.create(makeLocalCityObject("Postgres Point", "North Dakota", TEST_COUNTRY, 65535));
 
 		List<City> results = dao.findCityByCountryCode(TEST_COUNTRY);
 
@@ -102,7 +97,7 @@ public class JDBCCityDAOIntegrationTest {
 	public void returns_cities_by_district() {
 		String testDistrict = "Tech Elevator";
 		City theCity = makeLocalCityObject("SQL Station", testDistrict, TEST_COUNTRY, 65535);
-		dao.save(theCity);
+		dao.create(theCity);
 
 		List<City> results = dao.findCityByDistrict(testDistrict);
 
@@ -110,6 +105,19 @@ public class JDBCCityDAOIntegrationTest {
 		assertEquals(1, results.size());
 		City savedCity = results.get(0);
 		assertCitiesAreEqual(theCity, savedCity);
+	}
+
+	@Test
+	public void delete_city_actually_removes_city(){
+		String testDistrict = "Tech Elevator";
+		City theCity = makeLocalCityObject("SQL Station", testDistrict, TEST_COUNTRY, 65535);
+		dao.create(theCity);
+
+		dao.delete(theCity.getId());
+		City resultCity =dao.findCityById(theCity.getId());
+
+		Assert.assertNull(resultCity);
+
 	}
 
 	private City makeLocalCityObject(String name, String district, String countryCode, int population) {
