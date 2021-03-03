@@ -61,6 +61,14 @@ public class QuestionSqlDAO implements  QuestionDAO{
         return count==1; //we should update exactly one
     }
 
+    @Override
+    public Question createQuestion(Question q){
+        String sql = "INSERT into questions(title,question) VALUES(?,?) RETURNING question_id;";
+        long id = jdbcTemplate.queryForObject(sql, Long.class, q.getTitle(),q.getQuestion());
+        q.setId(id);
+        return q;
+    }
+
     private Question mapRowToQuestion(SqlRowSet results) {
         Question q = new Question();
         q.setTitle(results.getString("title"));

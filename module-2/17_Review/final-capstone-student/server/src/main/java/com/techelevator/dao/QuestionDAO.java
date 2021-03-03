@@ -9,4 +9,5 @@ public interface QuestionDAO {
     Question getRandomQuestion();
     boolean updateQuestion(Question q, int id);
     boolean deleteQuestion(int id);
+    Question createQuestion(Question q);
 }
