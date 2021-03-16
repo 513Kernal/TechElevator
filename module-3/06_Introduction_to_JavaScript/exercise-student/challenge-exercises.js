@@ -12,6 +12,33 @@
         iqTest("2 2 4 6") → 0 // all numbers are even, therefore there is no position of an odd number
 */
 
+
+function iqTest(x){
+    y = x.split(' ');
+    y.unshift(0);
+    let evenNum = -1;
+    let oddNum = 0;
+    let even = 0;
+    let odd = 0;
+    
+
+    for(i of y){
+            if (i % 2 === 0){
+                evenNum++;
+                even = i;
+            }else if(i % 2 != 0){
+                oddNum++;
+                odd = i;
+            }
+        }
+            if (evenNum === 0  || oddNum === 0)
+                return 0;
+            else if(evenNum > oddNum)
+                return y.indexOf(odd);
+            else if(evenNum < oddNum)
+                return y.indexOf(even);
+}
+
 /*
 2. **titleCase** Write a function that will convert a string into title case, given an optional 
     list of exceptions (minor words). The list of minor words will be given as a string with each 
@@ -28,3 +55,24 @@ argument is unused.
 		titleCase('THE WIND IN THE WILLOWS', 'The In') // should return: 'The Wind in the Willows'
         titleCase('the quick brown fox') // should return: 'The Quick Brown Fox'
 */
+
+function titleCase(test, minors){
+    let minorWords;
+    let title = [];
+    let sentence = test.toLowerCase().split(' ');
+    if(minors != undefined){
+      minorWords = minors.toLowerCase().split(' ');
+    }
+    for(word of sentence){
+
+        if(minorWords != undefined && minorWords.includes(word) && title.length > 0){
+            
+             title.push(word);
+        }else {
+            let firstLetter = word[0].toUpperCase();
+            wordNoFirstLetter = word.slice(1);
+            title.push(firstLetter + wordNoFirstLetter)
+        }   
+}
+return title.join(' ');
+} 
