@@ -1,24 +1,26 @@
 <template>
   <div id="app">
-    <user-list></user-list>
+    
+    <product-review />
   </div>
 </template>
 
 <script>
-import UserList from "./components/UserList.vue";
+
+import ProductReview from './components/ProductReview.vue'
 
 export default {
-  name: "app",
+  name: 'App',
   components: {
-    UserList
+  
+    ProductReview
   }
-};
+}
 </script>
-
 
 <style>
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
