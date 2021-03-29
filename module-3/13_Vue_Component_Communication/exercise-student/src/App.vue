@@ -2,16 +2,18 @@
   <div id="app">
     <h1>Reading List</h1>
     <reading-list />
+    <new-book-form />
   </div>
 </template>
 
 <script>
 import ReadingList from './components/ReadingList.vue';
-
+import NewBookForm from './components/NewBookForm.vue';
 export default {
   name: 'app',
   components: {
-    ReadingList
+    ReadingList,
+    NewBookForm
   }
 }
 </script>
@@ -25,4 +27,5 @@ export default {
   color: #2c3e50;
   margin: 60px;
 }
+
 </style>
